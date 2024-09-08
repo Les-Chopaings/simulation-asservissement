@@ -6,7 +6,7 @@ uint8_t dataGlobal_send;
 uint8_t dataGlobal_receive;
 std::atomic<bool> lockI2C(false); // Variable atomique pour le verrou
 
-void I2cSendData (uint8_t command, uint8_t* data, int length){
+void SimI2cSendData (uint8_t command, uint8_t* data, int length){
     while (lockI2C.exchange(true)) {
         std::this_thread::sleep_for(std::chrono::milliseconds(1));
     }
@@ -26,7 +26,7 @@ void I2cSendData (uint8_t command, uint8_t* data, int length){
     lockI2C.store(false);
 }
 
-void I2cReceiveData (uint8_t command, uint8_t* data, int length){
+void SimI2cReceiveData (uint8_t command, uint8_t* data, int length){
     while (lockI2C.exchange(true)) {
         std::this_thread::sleep_for(std::chrono::milliseconds(1));
     }

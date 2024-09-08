@@ -115,7 +115,7 @@ gpointer robotSim::threadFuncRobot(gpointer data) {
         int16_t x;
         int16_t y;
         int16_t theta;
-        get_coordinates(x,y,theta);
+        commandsAsserv.get_coordinates(x,y,theta);
         robot->setPosition(x,y,theta);
     }
     return NULL;

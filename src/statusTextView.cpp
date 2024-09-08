@@ -43,7 +43,7 @@ std::string generateText(void){
     int16_t x;
     int16_t y;
     int16_t theta;
-    get_coordinates(x,y,theta);
+    commandsAsserv.get_coordinates(x,y,theta);
     text += "x: " + std::to_string(x) + '\n';
     text += "y: " + std::to_string(y) + '\n';
     text += "theta: " + std::to_string(theta) + '\n';
