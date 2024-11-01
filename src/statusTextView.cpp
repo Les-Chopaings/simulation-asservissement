@@ -17,7 +17,7 @@ GThread* statusTextView::getThread(){
 gpointer statusTextView::thread_func(gpointer data) {
     statusTextView* stv = (statusTextView*)data;
     std::atomic<bool>* stop_thread = stv->mStop_thread;
-    while (1) {
+    while (!(*stop_thread)) {
         g_usleep(7000);
 
         {

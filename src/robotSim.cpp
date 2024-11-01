@@ -96,7 +96,7 @@ gboolean robotSim::draw_callback(GtkWidget *widget, cairo_t *cr, gpointer data){
 
     cairo_save(cr);
     cairo_translate(cr, image2_x + new_length2 / 2, image2_y + new_width2 / 2);
-    cairo_rotate(cr, robot->teta * (G_PI / 180));
+    cairo_rotate(cr, robot->teta * (-G_PI / 180));
     cairo_translate(cr, -(image2_x + new_length2 / 2), -(image2_y + new_width2 / 2));
     gdk_cairo_set_source_pixbuf(cr, scaled_pixbuf2, image2_x, image2_y);
     cairo_paint(cr);
