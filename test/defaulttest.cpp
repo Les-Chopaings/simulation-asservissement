@@ -11,8 +11,8 @@ void printPos (void){
 
 FUNCTIONSIM(defaultTest){
     printPos();
-    commandsAsserv.set_consigne_lineaire(-500,0);
-    sleep(5);
+    // commandsAsserv.set_consigne_lineaire(-500,0);
+    // sleep(5);
     commandsAsserv.set_consigne_angulaire(90,0);
     sleep(1);
     printPos();

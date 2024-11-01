@@ -6,6 +6,7 @@
 #include <chrono>
 #include <atomic>
 #include <string>
+#include <mutex>
 #include "commands.h"
 
 
@@ -14,12 +15,20 @@ struct TextBufferData {
     GtkTextBuffer* buffer;
 };
 
-struct ThreadDataTextInfo {
-    GtkTextBuffer* buffer;
-    std::atomic<bool>* stop_thread;
-};
 
-GThread*  intiThreadStatusTextView (GtkWidget * view, std::atomic<bool>* stop_thread);
-gpointer thread_func(gpointer data);
-gboolean update_text(gpointer data);
-std::string generateText(void);
+class statusTextView
+{
+private:
+    GThread* mThreadStatusTextView = NULL;
+    GtkTextBuffer* mBuffer;
+    std::atomic<bool>* mStop_thread;
+    std::string mText;
+    std::mutex mTextMutex;
+public:
+    statusTextView(GtkWidget * view,std::atomic<bool>* stop_thread);
+    ~statusTextView();
+    GThread* getThread();
+    static std::string generateText(void);
+    static gpointer thread_func(gpointer data);
+    static gboolean update_text(gpointer data);
+};

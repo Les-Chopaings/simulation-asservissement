@@ -76,6 +76,7 @@ int main(int argc, char *argv[]) {
     ledSim *led2;
     robotSim *robotDrawing;
     odometrieSim *odometrie;
+    statusTextView *stv;
 
 
 
@@ -118,7 +119,8 @@ int main(int argc, char *argv[]) {
     scrolledWindowLeftInfo = gtk_scrolled_window_new(NULL, NULL);
     gtk_paned_pack1(GTK_PANED(panedLeft), scrolledWindowLeftInfo, TRUE, FALSE);
     textViewLeftInfo = gtk_text_view_new();
-    t3 = intiThreadStatusTextView(textViewLeftInfo,&stop_thread);
+    stv = new statusTextView(textViewLeftInfo,&stop_thread);
+    t3 = stv->getThread();
     gtk_container_add(GTK_CONTAINER(scrolledWindowLeftInfo), textViewLeftInfo);
 
 
