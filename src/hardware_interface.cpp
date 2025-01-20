@@ -115,3 +115,14 @@ void systick_clear(){}
 void systick_counter_enable(){}
 void systick_interrupt_enable(){}
 uint32_t systick_get_value(){return 0;}
+
+void adc_power_off (uint32_t adc){}
+void adc_set_single_conversion_mode(uint32_t adc){}
+void adc_disable_external_trigger_regular(uint32_t adc){}
+void adc_set_sample_time_on_all_channels(uint32_t adc, uint8_t time){}
+void adc_enable_eoc_interrupt(uint32_t adc){}
+void adc_power_on(uint32_t adc){}
+void adc_set_regular_sequence(uint32_t adc, uint8_t length, uint8_t channel[]){}
+void adc_start_conversion_regular(uint32_t adc){}
+bool adc_eoc(uint32_t adc){return 0;}
+uint16_t adc_read_regular(uint32_t adc){return 0;}

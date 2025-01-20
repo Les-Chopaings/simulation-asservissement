@@ -13,7 +13,7 @@ FUNCTIONSIM(defaultTest){
     printPos();
     // commandsAsserv.set_consigne_lineaire(-500,0);
     // sleep(5);
-    commandsAsserv.set_consigne_angulaire(90,0);
+    commandsAsserv.consigne_angulaire(90);
     sleep(1);
     printPos();
 }

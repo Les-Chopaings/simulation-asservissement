@@ -50,6 +50,7 @@
 #define RCC_GPIOC              0
 #define GPIO_MODE_OUTPUT       0
 #define GPIO_MODE_INPUT        0
+#define GPIO_MODE_ANALOG       0
 #define GPIO_AF1               0
 #define GPIO_OTYPE_PP          0
 #define GPIO_OSPEED_2MHZ       0
@@ -77,6 +78,10 @@
 #define EXTI_TRIGGER_RISING    0
 #define NVIC_EXTI4_IRQ         0
 #define EXTI4                  0
+#define RCC_ADC1               0
+#define ADC1                   0
+#define ADC_SMPR_SMP_480CYC    0
+#define NVIC_ADC_IRQ           0
 
 
 #define TIM1                   1
@@ -145,7 +150,7 @@ void timer_enable_break_main_output(int a);
 void timer_enable_counter(int a);
 void timer_set_oc_value (uint32_t timer_peripheral, uint32_t oc_id, uint32_t value);
 
-	
+
 void gpio_mode_setup(int a, int b, int c, int d);
 void gpio_set(int port,int pin);
 void gpio_clear(int port,int pin);
@@ -185,6 +190,20 @@ uint32_t systick_get_value();
 void sys_tick_handler();
 
 int stm_main(void);
+
+void adc_power_off (uint32_t adc);
+void adc_set_single_conversion_mode(uint32_t adc);
+void adc_disable_external_trigger_regular(uint32_t adc);
+void adc_set_sample_time_on_all_channels(uint32_t adc, uint8_t time);
+void adc_enable_eoc_interrupt(uint32_t adc);
+void adc_power_on(uint32_t adc);
+void adc_set_regular_sequence(uint32_t adc, uint8_t length, uint8_t channel[]);
+void adc_start_conversion_regular(uint32_t adc);
+bool adc_eoc(uint32_t adc);
+uint16_t adc_read_regular(uint32_t adc);
+
+
+
 
 //*********************************************************************
 // SIMULATION
